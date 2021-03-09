@@ -28,8 +28,8 @@ app.component('product-display', {
                <product-details :details="details"></product-details>
             </ul>
 
+            <div> Colour: </div>
             <div class="d-flex"> 
-            
               <div 
                 v-for="(variant, index) in variants" 
                 :key="variant.id" 
@@ -40,6 +40,7 @@ app.component('product-display', {
               </div>
             </div>
 
+            <div> Size: </div>
             <ul class="d-flex sizes">
               <li v-for="size in sizes" class="button-size">
                 <a @click="{ selectedSize: true }">{{ size }}</a>
@@ -79,13 +80,13 @@ app.component('product-display', {
         return {
             product: 'Socks',
             brand: 'Vue Mastery',
-            image: './assets/images/socks_blue.jpg',
             url: 'https://google.com.br',
             selectedVariant: 0,
             onSale: true,
             variants: [
-                { id: 123, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
-                { id: 124, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
+                { id: 123, color: '#1b814c', image: './assets/images/socks_green.jpg', quantity: 50 },
+                { id: 124, color: '#586b84', image: './assets/images/socks_blue.jpg', quantity: 20 },
+                { id: 125, color: '#db9447', image: './assets/images/socks_blue.jpg', quantity: 0 },
             ],
             sizes: ['S', 'M', 'L', 'XL'],
             details: ['50% cotton', '30% wool', '20% polyester'],
