@@ -11,8 +11,10 @@
   </head>
   <body>
     <div id="app">
-      <div class="nav-bar"></div>
-      <div class="cart"> Cart ({{ cart.length }}) </div>
+      <div class="nav-bar">
+        <div class="cart"> Cart ({{ cart.length }} items) </div>
+      </div>
+      
       
       <product-display 
         :premium="premium" 
