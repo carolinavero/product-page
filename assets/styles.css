@@ -6,7 +6,7 @@ body {
 }
 
 .button {
-  margin: 30px;
+  margin: 10px 5px 0 0 ;
   background-color: #39495c;
   border-radius: 5px;
   font-size: 18px;
@@ -21,15 +21,23 @@ body {
   cursor: pointer;
 }
 
+.button-delete {
+  background-color: #ffffff;
+  color: #39495c;
+}
+
+.buttons {
+  margin-bottom: 2rem;
+}
+
 .cart {
-  margin: 25px 100px;
-  float: right;
   border: 1px solid #d8d8d8;
   padding: 10px 30px;
   background-color: white;
   -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
+  margin-right: 15px;
 }
 
 .color-circle {
@@ -40,6 +48,24 @@ body {
   border-radius: 50%;
 }
 
+.color-danger {
+  color: red;
+}
+
+.button-size {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid transparent;
+  margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.selectedSize {
+  border-color: #39495c;
+}
 
 .disabledButton {
   background-color: #d8d8d8;
@@ -58,7 +84,7 @@ img {
   border: 2px solid #d8d8d8;
   width: 70%;
   margin: 40px;
-  padding: 15px;
+  padding: 0;
   -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 2px 15px -12px rgba(0, 0, 0, 0.57);
@@ -68,6 +94,7 @@ input {
   width: 100%;
   height: 40px;
   margin-bottom: 20px;
+  border: 1px solid #d8d8d8;
 }
 
 label {
@@ -86,6 +113,9 @@ li {
   -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   -moz-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.57);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .out-of-stock-img {
@@ -113,12 +143,20 @@ p {
   width: 50%;
 }
 
+.reviews-block {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 30px;
+}
+
+
 .review-form {
   display: flex;
   flex-direction: column;
-  width: 425px;
+  width: 48%;
   padding: 20px;
-  margin: 40px;
+  margin: 10px;
   border: 2px solid #d8d8d8;
   background-color: white;
   -webkit-box-shadow: 0px 2px 15px -12px rgba(0, 0, 0, 0.57);
@@ -127,13 +165,13 @@ p {
 }
 
 .review-container {
-  width: 425px;
+  width: 48%;
   padding: 20px;
   background-color: white;
   -webkit-box-shadow: 0px 2px 20px -12px rgba(0, 0, 0, 0.57);
   -moz-box-shadow: 0px 2px 20px -12px rgba(0, 0, 0, 0.57);
   box-shadow: 2px 20px -12px rgba(0, 0, 0, 0.57);
-  margin-left: 40px;
+  margin: 10px;
   border: 2px solid #d8d8d8;
 }
 
@@ -143,7 +181,7 @@ p {
 
 .review-form .button {
   display: block;
-  margin: 30px auto;
+  margin: 10px auto;
 }
 
 select {
@@ -151,6 +189,8 @@ select {
   font-size: 20px;
   background-color: white;
   cursor: pointer;
+  margin-bottom: 20px;
+  border: 1px solid #d8d8d8;
 }
 
 textarea {
@@ -159,10 +199,25 @@ textarea {
   padding: 10px;
   font-size: 20px;
   margin-bottom: 20px;
+  border: 1px solid #d8d8d8;
 }
 
 ul {
   list-style-type: none;
+  padding-left: 0;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.error-alert {
+  background-color: #ffeceb;
+  color: red;
+  padding: 1rem 2rem;
+  border: 2px solid red;
+  border-radius: 5px;
+
 }
 
 @media only screen and (max-width: 600px) {

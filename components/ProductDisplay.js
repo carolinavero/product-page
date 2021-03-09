@@ -20,7 +20,7 @@ app.component('product-display', {
             <h1>{{ title }}</h1>
             <p v-if="inStock">In Stock</p>
             <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p> -->
-            <p v-else>Out of Stock</p>
+            <p v-else class="color-danger">Out of Stock</p>
 
             <p>Shipping: {{ shipping }}</p>
 
@@ -28,38 +28,51 @@ app.component('product-display', {
                <product-details :details="details"></product-details>
             </ul>
 
-            <div 
-              v-for="(variant, index) in variants" 
-              :key="variant.id" 
-              @mouseover="updateVariant(index)"
-              class="color-circle"
-              :style="{ backgroundColor: variant.color }"
-            >
+            <div class="d-flex"> 
+            
+              <div 
+                v-for="(variant, index) in variants" 
+                :key="variant.id" 
+                @mouseover="updateVariant(index)"
+                class="color-circle"
+                :style="{ backgroundColor: variant.color }"
+              >
+              </div>
             </div>
 
-            <ul>
-              <li v-for="size in sizes">
-                {{ size }}
+            <ul class="d-flex sizes">
+              <li v-for="size in sizes" class="button-size">
+                <a @click="{ selectedSize: true }">{{ size }}</a>
               </li>
             </ul>
 
-            <button 
-              class="button" 
-              :class="{ disabledButton: !inStock }"
-              @click="addToCart"
-            >
-              Add to Cart
-            </button>
+            <div class="buttons"> 
+            
+              <button 
+                class="button" 
+                :class="{ disabledButton: !inStock }"
+                @click="addToCart"
+              >
+                Add to Cart
+              </button>
 
-            <button class="button" @click="removeProduct">
-              Remove 
-            </button>
+              <button class="button button-delete" @click="removeProduct">
+                Remove 
+              </button>
+              
+            </div>
+
 
           </div>
         </div>
 
-        <review-list v-if="reviews.length" :reviews="reviews"></review-list>
-        <review-form @review-submitted="addReview"></review-form>
+        <div class="reviews-block">
+          
+          <review-form @review-submitted="addReview"></review-form>
+          <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+          
+        </div>
+
       </div>`, 
 
       data () {
@@ -76,7 +89,7 @@ app.component('product-display', {
             ],
             sizes: ['S', 'M', 'L', 'XL'],
             details: ['50% cotton', '30% wool', '20% polyester'],
-            reviews: []
+            reviews: [], 
         }
     },
     methods: {

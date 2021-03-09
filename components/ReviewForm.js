@@ -4,6 +4,13 @@ app.component('review-form', {
 
     `
     <form class="review-form" @submit.prevent="onSubmit">
+
+        <div v-if="error">
+            <div class="error-alert">
+                Review is incomplete! Please fill out every field.
+            </div>
+        </div>
+
         <h3>Leave a review</h3>
         <label for="name">Name:</label>
         <input id="name" v-model="name">
@@ -35,7 +42,18 @@ app.component('review-form', {
             name: '',
             review: '',
             rating: null,
-            recommend: null        
+            recommend: null,
+            error: false, 
+            reviews: [] 
+        }
+    },
+    mounted() {
+        if(localStorage.getItem('productReview')) {
+            try {
+                this.reviews = JSON.parse(localStorage.getItem('productReview'));
+            } catch(e) {
+                localStorage.removeItem('productReview');
+            }
         }
     },
     methods: {
@@ -45,7 +63,7 @@ app.component('review-form', {
             this.review === '' ||
             this.rating === null ||
             this.recommend === null) {
-                alert('Review is incomplete. Please fill out every field.')
+                this.error = true;
                 return
             }
 
@@ -56,12 +74,26 @@ app.component('review-form', {
                 recommend: this.recommend
             }
             this.$emit('review-submitted', productReview)
+            this.reviews = productReview
 
             this.name = '',
             this.review = '',
             this.rating = null,
             this.recommend = null
 
+            this.saveReviews()
+
+        },
+        saveReviews() {
+            
+            console.log(this.reviews);
+            const resultReviews = JSON.stringify(this.reviews);
+            localStorage.setItem('productReview', resultReviews);
+
+            if(localStorage.name) this.name = localStorage.name;
+            if(localStorage.review) this.review = localStorage.review;
+            if(localStorage.rating) this.rating = localStorage.rating;
+            if(localStorage.recommend) this.name = localStorage.recommend;
         }
     }
 })
