@@ -5,10 +5,16 @@ app.component('review-list', {
             required: true
         }
     },
+    mounted() {
+        if(localStorage.getItem('productReview')) {
+            console.log("list...", this.reviews)
+           
+        }
+    },
     template: 
     /*html*/
     `   
-    <div class="review-container">
+    <div class="review-container" >
         <h3> Reviews: </h3>
         <ul>
             <li v-for="(review, index) in reviews" :key="index">

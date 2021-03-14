@@ -11,8 +11,8 @@
   </head>
   <body>
     <div id="app">
-      <div class="nav-bar">
-        <div class="cart"> Cart ({{ cart.length }} items) </div>
+      <div class="nav-bar" data-cy="navbar">
+        <div class="cart" data-cy="cart"> Cart ({{ cart.length }} items) </div>
       </div>
       
       
@@ -20,6 +20,7 @@
         :premium="premium" 
         @add-to-cart="updateCart" 
         @remove-from-cart="removeProduct"
+        data-cy="product"
       ></product-display>
       
     </div>

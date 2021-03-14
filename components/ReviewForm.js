@@ -44,16 +44,26 @@ app.component('review-form', {
             rating: null,
             recommend: null,
             error: false, 
-            reviews: [] 
+            reviews: localStorage.getItem('productReview')
         }
     },
     mounted() {
         if(localStorage.getItem('productReview')) {
-            try {
-                this.reviews = JSON.parse(localStorage.getItem('productReview'));
-            } catch(e) {
-                localStorage.removeItem('productReview');
-            }
+            console.log('mounted - form')
+            // let localStorageValue = localStorage.getItem('productReview')
+            // try {
+            //     //console.log("try.. ", localStorageValue)
+            //     this.reviews = localStorageValue;
+            //     console.log(this.reviews)
+
+            //     this.reviews = JSON.parse(localStorage.getItem('productReview'));
+            //     console.log("try...", this.reviews)
+            //     return this.reviews
+
+            // } catch(e) {
+            //     //localStorage.removeItem('productReview');
+            //     console.log(e)
+            // }
         }
     },
     methods: {
@@ -85,10 +95,11 @@ app.component('review-form', {
 
         },
         saveReviews() {
-            
-            console.log(this.reviews);
             const resultReviews = JSON.stringify(this.reviews);
+            console.log("save..", resultReviews)
+
             localStorage.setItem('productReview', resultReviews);
+            console.log("local..", localStorage)
 
             if(localStorage.name) this.name = localStorage.name;
             if(localStorage.review) this.review = localStorage.review;

@@ -10,22 +10,22 @@ app.component('product-display', {
     /*html*/
     `<div class="product-display">
         <div class="product-container">
-          <div class="product-image">
+          <div class="product-image" data-cy="product-image">
             <a :href="url" target="_blank">
               <img v-bind:src="image" :alt="product" :class="{ 'out-of-stock-img': !inStock }" >
             </a>
           </div>
-          <div class="product-info">
+          <div class="product-info" data-cy="product-info-block">
 
             <h1>{{ title }}</h1>
             <p v-if="inStock">In Stock</p>
             <!-- <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out</p> -->
             <p v-else class="color-danger">Out of Stock</p>
 
-            <p>Shipping: {{ shipping }}</p>
+            <p data-cy="shipping">Shipping: {{ shipping }}</p>
 
             <ul>
-               <product-details :details="details"></product-details>
+               <product-details :details="details" data-cy="details-list"></product-details>
             </ul>
 
             <div> Colour: </div>
@@ -36,12 +36,13 @@ app.component('product-display', {
                 @mouseover="updateVariant(index)"
                 class="color-circle"
                 :style="{ backgroundColor: variant.color }"
+                data-cy="variants-list"
               >
               </div>
             </div>
 
             <div> Size: </div>
-            <ul class="d-flex sizes">
+            <ul class="d-flex sizes" data-cy="sizes-list">
               <li v-for="size in sizes" class="button-size">
                 <a @click="{ selectedSize: true }">{{ size }}</a>
               </li>
@@ -53,11 +54,16 @@ app.component('product-display', {
                 class="button" 
                 :class="{ disabledButton: !inStock }"
                 @click="addToCart"
+                data-cy="add-to-cart-button"
               >
                 Add to Cart
               </button>
 
-              <button class="button button-delete" @click="removeProduct">
+              <button 
+                class="button button-delete" 
+                @click="removeProduct"
+                data-cy="delete-button"
+              >
                 Remove 
               </button>
               
@@ -69,8 +75,8 @@ app.component('product-display', {
 
         <div class="reviews-block">
           
-          <review-form @review-submitted="addReview"></review-form>
-          <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+          <review-form @review-submitted="addReview" data-cy="review-form"></review-form>
+          <review-list  v-if="reviews.length" :reviews="reviews" data-cy="review-list"></review-list> 
           
         </div>
 
@@ -90,7 +96,7 @@ app.component('product-display', {
             ],
             sizes: ['S', 'M', 'L', 'XL'],
             details: ['50% cotton', '30% wool', '20% polyester'],
-            reviews: [], 
+            reviews: [] 
         }
     },
     methods: {
